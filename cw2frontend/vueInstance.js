@@ -15,7 +15,7 @@ let app = new Vue({
     async search() {
       const searchString = "E";
       try {
-        const rawResponse = await fetch('http://localhost:8080/search', {
+        const rawResponse = await fetch('http://bookshop-env.eba-pxbmjvnm.eu-west-2.elasticbeanstalk.com/search', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -31,7 +31,7 @@ let app = new Vue({
 			}
     },
     async getLessons() {
-      const rawResponse = await fetch('http://localhost:8080/lessons');
+      const rawResponse = await fetch('http://bookshop-env.eba-pxbmjvnm.eu-west-2.elasticbeanstalk.com/lessons');
       const lessons = await rawResponse.json();
 
     },
@@ -41,7 +41,7 @@ let app = new Vue({
       const lessonId = "63d503a55fd372e8572c1f12";
       const spaces = 2;
 			try {
-        const rawResponse = await fetch('http://localhost:8080/insertOrder', {
+        const rawResponse = await fetch('http://bookshop-env.eba-pxbmjvnm.eu-west-2.elasticbeanstalk.com/insertOrder', {
           method: 'POST',
           headers: {
             Accept: 'application/json',
@@ -59,7 +59,7 @@ let app = new Vue({
       const sessionId = "63d0f989c83dc58dfa121159";
       const spaces = 0;
 			try {
-        const rawResponse = await fetch('http://localhost:8080/updateLessonSpace', {
+        const rawResponse = await fetch('http://bookshop-env.eba-pxbmjvnm.eu-west-2.elasticbeanstalk.com/updateLessonSpace', {
           method: 'PUT',
           headers: {
             Accept: 'application/json',
