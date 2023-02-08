@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@2.7.8/dist/vue.js"></script>
+    <link rel="stylesheet" type="text/css" href="./style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <!-- The <div> ID will be used to link to the Vue.js code -->
+        <button v-on:click="sortAlphabetical">Sort:By Subject</button>
+        <button v-on:click="sortByCity">Sort:By Location</button>
+        <button v-on:click="sortNumerical">Sort:By price</button>
+        <h1>Lessons shop</h1>
+        <button @click="goToCheckoutPage = !goToCheckoutPage"
+            v-bind:disabled="this.countsLessonSpacesInCart() == 0">
+            Cart
+            </button>
+        <div v-if='goToCheckoutPage == false'>
+            <div class="inputContainer">
+                <label>Search title:</label>
+                <input type="text" v-model="searchString" placeholder="Search title.."/>
+                <button v-on:click="searchHandler()" >Search</button>
+            </div>
+            <div class="cardContainer">
+                <div v-for="product in searchList" :key="Math.floor(Math.random() * 1000)*Date.now()">
+                    <div class="cart">
+                        <p>Subject:{{product.topic}}</p>
+                        <p>Price:{{product.price}}</p>
+                        <p>Spaces:{{product.space}}</p>
+                        <p>Location:{{product.location}}</p>
+                        <img class="icon"  v-bind:src="iconSrc" style="width:50px;height:50px" />
+                        <button v-on:click="buy(product)" v-bind:disabled="product.space == 0">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="cardContainer" v-if='goToCheckoutPage == false && searchList.length == 0'>
+                <div v-for="product in products" :key="Math.floor(Math.random() * 1000)*Date.now()">
+                    <div class="cart">
+                        <p>Subject:{{product.topic}}</p>
+                        <p>Price:{{product.price}}</p>
+                        <p>Spaces:{{product.space}}</p>
+                        <p>Location:{{product.location}}</p>
+                        <img class="icon"  v-bind:src="iconSrc" style="width:50px;height:50px" />
+                        <button v-on:click="buy(product)" v-bind:disabled="product.space == 0">Add to cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div v-else>
+            <button @click="goToCheckoutPage = !goToCheckoutPage"
+               >
+                Shop
+            </button>
+            <h1>Cart:</h1>
+            <div class="cardContainer">
+                <div v-for="product in cart" :key="Math.floor(Math.random() * 1000)*Date.now()">
+                    <div class="cart" v-if='product.space > 0'>
+                        <p>Subject:{{product.topic}}</p>
+                        <p>Price:{{product.price}}</p>
+                        <p>Spaces:{{product.space}}</p>
+                        <p>Location:{{product.location}}</p>
+                        <img class="icon"  v-bind:src="iconSrc" style="width:50px;height:50px" />
+                        <!-- Remove functionality temporary commented as it not required in cw2 -->
+                        <!-- <button v-on:click="removeFromCart(product)" v-bind:disabled="product.space == 0">Remove from
+                            cart
+                        </button> -->
+                    </div>
+                </div>
+            </div>
+            <h1>Checkout</h1>
+            <div class="inputContainer">
+                <input type="text" placeholder="Enter name" v-model="customerName" />
+                <input v-model="customerPhone" type="number" pattern=".{10,10}" class="input_fields" required
+                    placeholder="Phone number (+91)" />
+                <button v-on:click="checkoutHandler()" v-bind:disabled="customerName.length<2 || customerPhone.toString().length<6">
+                    Checkout
+                </button>
+            </div>
+            <p>{{outputMessage}}</p>
+        </div>
+    </div>
+    </div>
+    <script src="products.js"></script>
+    <script src="cart.js"></script>
+    <script type="text/javascript" src="vueInstance.js"></script>
+</body>
+
+</html>
