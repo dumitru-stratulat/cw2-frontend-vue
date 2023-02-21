@@ -14,7 +14,7 @@ let app = new Vue({
 	},
 	methods: {
 		async getLessons() {
-			const rawResponse = await fetch('http://bookshop-env.eba-pxbmjvnm.eu-west-2.elasticbeanstalk.com/lessons');
+			const rawResponse = await fetch('https://bookshop-env.eba-pxbmjvnm.eu-west-2.elasticbeanstalk.com/lessons');
 			const lessons = await rawResponse.json();
 			this.products = lessons;
 		},
@@ -67,7 +67,7 @@ let app = new Vue({
 		async search() {
             const searchString = this.searchString;
 			try {
-				const rawResponse = await fetch('http://bookshop-env.eba-pxbmjvnm.eu-west-2.elasticbeanstalk.com/search', {
+				const rawResponse = await fetch('https://bookshop-env.eba-pxbmjvnm.eu-west-2.elasticbeanstalk.com/search', {
 					method: 'POST',
 					headers: {
 						Accept: 'application/json',
@@ -82,7 +82,7 @@ let app = new Vue({
 		},
 		async updateLesson(lessonId,spaces) {
 			try {
-				const rawResponse = await fetch('http://bookshop-env.eba-pxbmjvnm.eu-west-2.elasticbeanstalk.com/updateLessonSpace', {
+				const rawResponse = await fetch('https://bookshop-env.eba-pxbmjvnm.eu-west-2.elasticbeanstalk.com/updateLessonSpace', {
 					method: 'PUT',
 					headers: {
 						Accept: 'application/json',
@@ -98,7 +98,7 @@ let app = new Vue({
 			const name = this.customerName;
 			const phoneNr = this.customerPhone;
 			try {
-				const rawResponse = await fetch('http://bookshop-env.eba-pxbmjvnm.eu-west-2.elasticbeanstalk.com/insertOrder', {
+				const rawResponse = await fetch('https://bookshop-env.eba-pxbmjvnm.eu-west-2.elasticbeanstalk.com/insertOrder', {
 					method: 'POST',
 					headers: {
 						Accept: 'application/json',
