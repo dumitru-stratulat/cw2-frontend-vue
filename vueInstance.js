@@ -162,6 +162,11 @@ let app = new Vue({
 			this.cart.sort((a, b) => a.price - b.price);
 		}
 	},
+	created(){
+		if ("serviceWorker" in navigator) {
+			navigator.serviceWorker.register("service-worker.js");
+			}
+	},
 	beforeMount() {
 		this.getLessons();
 	}
