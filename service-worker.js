@@ -1,14 +1,6 @@
 var cacheName = "courseStore-v1";
 
 var cacheFiles = [
-"courseShop.html",
-"vueInstance.js",
-"icon.png",
-  "style.css"
-];
-var cacheName = "courseStore-v1";
-
-var cacheFiles = [
     "courseShop.html",
     "vueInstance.js",
     "icon.png",
