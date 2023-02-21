@@ -1,0 +1,15 @@
+{
+    "name": "Course shop",
+    "short_name": "Shop",
+    "description": "My coure shop",
+    "icons": [
+    {
+    "src": "icon.png",
+    "sizes": "32x32",
+    "type": "image/png"
+    }
+    ],
+    "start_url": "courseShop.html",
+    "display": "fullscreen",
+    "background_color": "#260bca"
+    }
