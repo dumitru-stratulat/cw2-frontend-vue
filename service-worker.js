@@ -4,6 +4,7 @@ var cacheFiles = [
 "courseShop.html",
 "vueInstance.js",
 "icon.png",
+  "style.css"
 ];
 self.addEventListener("install", function(e) {
 console.log("[Service Worker] Install");
